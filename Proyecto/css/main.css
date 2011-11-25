@@ -11,6 +11,15 @@ a, a:active, a:hover, a:focus { color: #008595; text-decoration: none; outline: 
 .ui-dialog-vevent .summary { margin:0.5em 0 0 0; display:block; }
 .ui-dialog-vevent .dtstart { display:none; }
 .ui-dialog-vevent .website { margin:0 0 0.6em; }
+
+.ui-dialog .ui-header, 
+.ui-dialog .ui-content, 
+.ui-dialog .ui-footer { 
+	max-width: 10; 
+	margin: 10% auto 15px auto; 
+}
+
+
 abbr { border:none; }
 #sidebar h3 { margin: 0.2em 0; }
 #sidebar a.url { word-wrap: break-word; }
@@ -31,7 +40,7 @@ a.buttonize.ftr { margin: 0.7em 1.2em; display: inline-block; }
 /* Moved to html file #doc { min-width: 304px; width:screen.width; max-width:490px; margin: 0 0.3em; padding: 0 0.2em; } */
 #map_canvas { width: 100%; }
 
-.ftbar { height: 3.5em; width:screen.width; margin:0; padding: 0; background:#eee; background: -webkit-gradient(linear, left top, left bottom, from(#cceeff), to(#4496aa));  background: -moz-linear-gradient(top, #cceeff, #4496aa); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#cceeff, endColorstr=#4496aa); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#cceeff, endColorstr=#4496aa)"; }
+.ftbar { height: 3.5em; width:screen.width; margin:0; padding: 0; background:#eee; }
 
 .gradient {
 	background:#fff;

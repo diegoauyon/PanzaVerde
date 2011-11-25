@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
-        <title>Wolf Map</title>
+        <title>Antigua Map</title>
         <meta name="keywords" content="Google maps, Antigua Guatemala" />
 		<meta name="description" content="antigua" />
 		<meta http-equiv="content-language" content="es" />
@@ -15,26 +15,30 @@
         <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.2.0/build/cssbase/base-min.css" />
 		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.2.0/build/cssfonts/fonts-min.css" />
         <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css" />	 
-		
-		<link rel="stylesheet" type="text/css" href="../css/main.css" />
-		 <link rel="stylesheet" href="../css/jquery.mobile.min.20110527.css" type="text/css" />
-        
+		        
 		<script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js" type="text/javascript"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
 		
 
         <script type="text/javascript" src="../js/jquery.ui.map.js"></script>
-		
 		<script type="text/javascript" charset="utf-8" src="../js/phonegap.0.9.5.1.js"></script>
 		<script src="http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclusterer/1.0/src/markerclusterer_packed.js" type="text/javascript"></script>
 		
+		<link rel="stylesheet" type="text/css" href="../css/main.css" />	
+
     </head>
     <body>
+	
+	
+		<div class="ftbar">
+			<p><a class="buttonize ftr" rel="external" href="../index.html">Menu</a></p>		
+		</div>
+		
 			
 		<div id="doc">
-			<h1>Mapa</h1>
-			
+		
+		
 			<div class="gradient ui-corner-all shadow-all" id="map_item">
                 <div id="map_canvas"></div>
             </div>
@@ -43,9 +47,8 @@
 			<div id="dialog"></div>
 
 		</div>
-		<div class="ftbar">
-			<p><a class="buttonize ftr" rel="external" href="../index.html">Menu</a></p>		
-		</div>
+
+		
 		<script type="text/javascript">
 		//<![CDATA[ 				
 		$(function() {
@@ -119,8 +122,8 @@
 							var append = '<form id="dialog'+marker.__gm_id+'" onsubmit="return false;" method="get" action="/" style="display:none;">' +
 							'<p><label for="nombre"></label>"'+m.punto.nombre+'"</p><p><label for="direccion">Dirección: </label>"'+m.punto.direccion+'"</p>';
 							if (m.punto.telefono != null) {append = append + '<p><label for="telefono">Tel: </label>"'+m.punto.telefono+'"</p>';}
-							if (m.punto.website != null){append = append +'<p><label for="website">Website: </label>"'+m.punto.website+'"</p></form>';}
-							
+							if (m.punto.website != null){append = append +'<p><label for="website">Website: </label>"'+m.punto.website+'"</p>';}
+							append = append + '</form>';
 
 								$('#dialog').append(append);
 								//encontrarLocacion(marker.getPosition(),marker);
@@ -141,13 +144,23 @@
 				if (tipoPunto == "restaurante"){return icono + '1.png';}
 				else if (tipoPunto == "hotel"){return icono + '2.png';}
 				else if (tipoPunto == "turistico"){return icono+'3.png';}
-				return icono+'4.png';
+				else if (tipoPunto == "bar"){return icono+'4.png';}
+				return icono+'5.png';
 			}
 
 
 
 			function abrirDialogo(el) {
-					$('#dialog'+el.__gm_id).dialog({'modal':false, 'title': 'Información'});
+					$('#dialog'+el.__gm_id).dialog({'weight':'50','height': '200' ,'modal':true, 'title': 'Información', 'buttons': { 
+						"Remove": function() {
+							$(this).dialog( "close" );
+							el.setMap(null);
+						},
+						"Save": function() {
+							$(this).dialog( "close" );
+						}
+					}});
+					
 				}
 
 			function openindex()
