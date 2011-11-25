@@ -152,13 +152,13 @@
 
 			function abrirDialogo(el) {
 					$('#dialog'+el.__gm_id).dialog({'weight':'50','height': '200' ,'modal':true, 'title': 'Información', 'buttons': { 
-						"Remove": function() {
+						"Cerrar": function() {
 							$(this).dialog( "close" );
-							el.setMap(null);
-						},
-						"Save": function() {
-							$(this).dialog( "close" );
+							//el.setMap(null);
 						}
+						//"Save": function() {
+						//	$(this).dialog( "close" );
+						//}
 					}});
 					
 				}
